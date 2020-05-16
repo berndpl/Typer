@@ -11,26 +11,34 @@ import AVFoundation
 
 class ViewController: UIViewController, UITextFieldDelegate {
     
-    var wordBuffer:String = ""
-    
     @IBOutlet weak var textField: UITextField!
+    var wordBuffer:String = ""
+    var currentHue:CGFloat = 0
     
-    override var prefersStatusBarHidden: Bool {
-        return true
+    func subtleColor(hue:CGFloat)->UIColor {
+        let color = UIColor(hue: hue, saturation: 0.47, brightness: 0.90, alpha: 1.0)
+        return color
     }
-    
-    override var prefersHomeIndicatorAutoHidden: Bool {
-        return true
-    }
-    
+        
     // MARK: - Model
     
+    func advanceColor() {
+        currentHue += 0.2
+        print("hue \(currentHue)")
+        textField.textColor = subtleColor(hue: currentHue)
+    }
+    
     func didTypeCharacter(character:String) {
+        advanceColor()
         wordBuffer.append(character)
     }
     
     func didPressReturn() {
         speak(utterance: wordBuffer)
+        wordBuffer = ""
+    }
+
+    func didPressBackspace(){
         wordBuffer = ""
     }
     
@@ -81,6 +89,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
         item.leadingBarButtonGroups = []
         item.trailingBarButtonGroups = []
         textField.autocorrectionType = .no
+    }
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
+    override var prefersHomeIndicatorAutoHidden: Bool {
+        return true
     }
 
 }
