@@ -8,7 +8,7 @@ For sound check out the [video](https://youtu.be/xRLMbQ5TKVU)
 
 ### Features
 * Build for iPad with external Keyboard attached.
-* Multi languge, based on active keyboard language
+* Multi language support, based on active keyboard language
 
 --
 
