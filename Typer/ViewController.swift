@@ -24,7 +24,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     func advanceColor() {
         currentHue += 0.2
-        print("hue \(currentHue)")
         textField.textColor = subtleColor(hue: currentHue)
     }
     
@@ -43,16 +42,31 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     func speak(utterance:String) {
-       let utterance = AVSpeechUtterance(string: utterance)
-       utterance.voice = AVSpeechSynthesisVoice(language: "de-DE")
-       utterance.rate = 0.4
-       let synthesizer = AVSpeechSynthesizer()
-       synthesizer.speak(utterance)
+        let utterance = AVSpeechUtterance(string: utterance)
+        let language = textField.textInputMode?.primaryLanguage
+        utterance.voice = AVSpeechSynthesisVoice(language: language)
+        utterance.rate = 0.4
+        let synthesizer = AVSpeechSynthesizer()
+        synthesizer.speak(utterance)
     }
     
+    func isBackspace(stringChanged:String)->Bool {
+        if let char = stringChanged.cString(using: String.Encoding.utf8) {
+            let isBackSpace = strcmp(char, "\\b")
+            if (isBackSpace == -92) {
+                return true
+            }
+        }
+        return false
+    }
+    
+
     // MARK: - TextField Delegates
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if isBackspace(stringChanged: string) {
+            didPressBackspace()
+        }
         print(string)
         didTypeCharacter(character: string)
         textField.text = string
@@ -80,7 +94,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         if let descriptor = systemFont.fontDescriptor.withDesign(.rounded) {
             textField.font = UIFont(descriptor: descriptor, size: fontSize)
         }
-        
+        advanceColor()
         UITextField.appearance().tintColor = .clear
     }
     
