@@ -34,6 +34,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     func didPressReturn() {
         speak(utterance: wordBuffer)
+        textField.text = wordBuffer.uppercased()
         wordBuffer = ""
     }
 
@@ -42,7 +43,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     func speak(utterance:String) {
-        let utterance = AVSpeechUtterance(string: utterance)
+        let utterance = AVSpeechUtterance(string: utterance.lowercased())
         let language = textField.textInputMode?.primaryLanguage
         utterance.voice = AVSpeechSynthesisVoice(language: language)
         utterance.rate = 0.4
@@ -69,7 +70,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         }
         print(string)
         didTypeCharacter(character: string)
-        textField.text = string
+        textField.text = string.uppercased()
         speak(utterance: string)
         return false
     }
@@ -90,6 +91,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
     func configureTextStyle() {
         let fontSize:CGFloat = 400
+        textField.textAlignment = .center
         let systemFont = UIFont.systemFont(ofSize: fontSize, weight: .bold)
         if let descriptor = systemFont.fontDescriptor.withDesign(.rounded) {
             textField.font = UIFont(descriptor: descriptor, size: fontSize)

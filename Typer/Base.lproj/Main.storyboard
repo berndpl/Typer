@@ -15,11 +15,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="1194" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="a" textAlignment="center" adjustsFontForContentSizeCategory="YES" minimumFontSize="80" translatesAutoresizingMaskIntoConstraints="NO" id="SLt-KG-v91">
-                                <rect key="frame" x="0.0" y="0.0" width="1194" height="814"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="fsdsdfsdfsdfsdfsdfsdfdsf" textAlignment="center" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="SLt-KG-v91">
+                                <rect key="frame" x="16" y="0.0" width="1162" height="814"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="600"/>
+                                <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="600"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="h8h-Zu-xa5"/>
@@ -29,8 +29,8 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="SLt-KG-v91" secondAttribute="bottom" id="7Ly-Ex-9L5"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="SLt-KG-v91" secondAttribute="trailing" id="H08-fz-Zlc"/>
-                            <constraint firstItem="SLt-KG-v91" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="NfZ-fO-ImX"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="SLt-KG-v91" secondAttribute="trailing" constant="16" id="H08-fz-Zlc"/>
+                            <constraint firstItem="SLt-KG-v91" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="NfZ-fO-ImX"/>
                             <constraint firstItem="SLt-KG-v91" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="xQC-jQ-LbE"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
